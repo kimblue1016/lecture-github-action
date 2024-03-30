@@ -1,4 +1,4 @@
-name: p3 - Job
+name: p3 - env
 
 on: workflow_dispatch
 
