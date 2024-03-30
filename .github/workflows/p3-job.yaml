@@ -1,0 +1,41 @@
+name: p2 - Condition
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    name: Build and Test
+    runs-on: ubuntu-latest
+    outputs:
+      output1: ${{ steps.build_project.outputs.build_id }}
+      output2: ${{ steps.test_project.outputs.test_output }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: build_project
+        run: |
+          echo "build_id=$GITHUB_JOB"
+          echo "build_id=$GITHUB_JOB" >> "$GITHUB_OUTPUT"
+      - name: test_project
+        run: |
+          echo "test_output=pass"
+          echo "test_output=pass" >> "$GITHUB_OUTPUT"
+  deploy:
+    name: Deploy to production
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check
+        env:
+          build_id: ${{ needs.build.outputs.output1 }}
+          test_output: ${{ needs.build.outputs.output2 }}
+        run: |
+          echo "Build ID: ${{ env.build_id }}"
+          echo "Test Output: ${{ env.test_output }}"
+      - name: Deploy to production
+        env:
+          test_output: ${{ needs.build.outputs.output2 }}
+        if: ${{ env.test_output == 'pass' }}
+        run: |
+          echo "Build ID: $build_id"
+          echo "Deploying to production server"
