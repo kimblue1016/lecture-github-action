@@ -1,0 +1,12 @@
+name: p2 - Condition
+
+on: workflow_dispatch
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/master' }}
+    steps:
+      - name: hi
+        run: |
+          echo "hi $GITHUB_ACTOR"
