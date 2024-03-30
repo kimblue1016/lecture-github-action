@@ -1,4 +1,4 @@
-name: p2 - Condition
+name: p3 - Job
 
 on: workflow_dispatch
 
