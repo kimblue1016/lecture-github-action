@@ -27,14 +27,14 @@ jobs:
     steps:
       - name: Check
         env:
-          build_id: ${{ needs.build.outputs.output1 }}
-          test_output: ${{ needs.build.outputs.output2 }}
+          build_id: ${{ needs.job_set_env.outputs.output1 }}
+          test_output: ${{ needs.job_set_env.outputs.output2 }}
         run: |
           echo "Build ID: ${{ env.build_id }}"
           echo "Test Output: ${{ env.test_output }}"
       - name: Deploy to production
         env:
-          test_output: ${{ needs.build.outputs.output2 }}
+          test_output: ${{ needs.job_set_env.outputs.output2 }}
         if: ${{ env.test_output == 'pass' }}
         run: |
           echo "Build ID: $build_id"
