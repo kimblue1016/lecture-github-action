@@ -3,7 +3,7 @@ name: p3 - Job
 on: workflow_dispatch
 
 jobs:
-  build:
+  job_set_env:
     name: Build and Test
     runs-on: [self-hosted]
     outputs:
@@ -20,7 +20,7 @@ jobs:
         run: |
           echo "test_output=pass"
           echo "test_output=pass" >> "$GITHUB_OUTPUT"
-  deploy:
+  job_get_env:
     name: Deploy to production
     needs: build
     runs-on: ubuntu-latest
@@ -39,3 +39,19 @@ jobs:
         run: |
           echo "Build ID: $build_id"
           echo "Deploying to production server"
+  step_get_set_env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - id: generate-random-id
+        name: Generate random string
+        run: echo "random_id=$RANDOM" >> "$GITHUB_OUTPUT"
+      - id: build-project
+        name: Build project
+        run: |
+          echo "Random ID: ${{ steps.generate-random-id.outputs.random_id }}"
+      - id: run-tests
+        name: Run tests
+        run: |
+          echo "Random ID: ${{ steps.generate-random-id.outputs.random_id }}"
