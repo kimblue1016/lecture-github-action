@@ -2,8 +2,8 @@ name: p6 - trigger
 on:
   push:
     branches:
-      - 'main'
-      - '*'
+      - '!main'
+      #- '*'
     paths-ignore:
       - 'README.md'
 jobs:
