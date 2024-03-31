@@ -2,7 +2,7 @@ name: p7- Message
 on: workflow_dispatch
 jobs:
   job-1:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Step 1
         run: |
@@ -19,7 +19,7 @@ jobs:
         run: |
           echo "::add-mask::$SECRET_MESSAGE"
   job-2:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Step 1
         run: |
@@ -31,7 +31,7 @@ jobs:
           echo "Group2 START"
           echo "::endgroup::"
   job-3:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Stop Workflow
         if: always()
@@ -39,7 +39,7 @@ jobs:
           echo "::warning::Stop Workflow"
           echo "::stop-commands::Stop Workflow"
   job-4:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
       - name: Step 1
         run: |
