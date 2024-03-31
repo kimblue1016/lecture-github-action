@@ -1,0 +1,46 @@
+name: p7- Message
+on: workflow_dispatch
+jobs:
+  job-1:
+    runs-on: self-hosted
+    steps:
+      - name: Step 1
+        run: |
+          echo "::debug:: Run Step 1, How to show debug message?"
+      - name: Step 2
+        run: |
+          echo "::error Run Step 2, Error Raise!"
+      - name: Step 3
+        run: |
+          echo "::notice: Run Step 3, And notice message"
+      - name: Step 4
+        env:
+          SECRET_MESSAGE: This is secret message
+        run: |
+          echo "::add-mask::$SECRET_MESSAGE"
+  job-2:
+    runs-on: self-hosted
+    steps:
+      - name: Step 1
+        run: |
+          echo "::group::Group 1"
+          echo "Group1 START"
+          echo "::endgroup::"
+
+          echo "::group::Group 2"
+          echo "Group2 START"
+          echo "::endgroup::"
+  job-3:
+    runs-on: self-hosted
+    steps:
+      - name: Stop Workflow
+        if: always()
+        run: |
+          echo "::warning::Stop Workflow"
+          echo "::stop-commands::Stop Workflow"
+  job-4:
+    runs-on: self-hosted
+    steps:
+      - name: Step 1
+        run: |
+          echo "### This is GitHub Action World!" >> $GITHUB_STEP_SUMMARY
