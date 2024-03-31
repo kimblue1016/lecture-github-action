@@ -2,24 +2,24 @@ name: p7- Message
 on: workflow_dispatch
 jobs:
   job-1:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Step 1
         run: |
-          echo "::debug:: Run Step 1, How to show debug message?"
+          echo "::debug Run Step 1, How to show debug message?"
       - name: Step 2
         run: |
           echo "::error Run Step 2, Error Raise!"
       - name: Step 3
         run: |
-          echo "::notice: Run Step 3, And notice message"
+          echo "::notice Run Step 3, And notice message"
       - name: Step 4
         env:
           SECRET_MESSAGE: This is secret message
         run: |
           echo "::add-mask::$SECRET_MESSAGE"
   job-2:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Step 1
         run: |
@@ -31,7 +31,7 @@ jobs:
           echo "Group2 START"
           echo "::endgroup::"
   job-3:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Stop Workflow
         if: always()
@@ -39,7 +39,7 @@ jobs:
           echo "::warning::Stop Workflow"
           echo "::stop-commands::Stop Workflow"
   job-4:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
       - name: Step 1
         run: |
