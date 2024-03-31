@@ -6,7 +6,7 @@ jobs:
     steps:
       - name: Get Random UUID
         id: uuid
-        run: echo "::set-output name=uuid::$(uuidgen)"
+        run: echo "uuid=$(uuidgen) >> $GITHUB_OUTPUT"
       - name: Print UUID
         run: |
           echo "UUID: ${{ steps.uuid.outputs.uuid }}"
