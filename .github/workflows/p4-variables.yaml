@@ -1,0 +1,29 @@
+name: p4 - variables
+on: workflow_dispatch
+
+env:
+  name: sami
+
+jobs:
+  build_1:
+    runs-on: self-hosted
+    env:
+      nickname: daisy
+    steps:
+      - name: Step 1
+        run: |
+          echo "hi $nickname !"
+      - name: Step 2
+        run: |
+          echo "hello $nickname !"
+        env:
+          nickname: sarah
+      - name: Step 3
+        run: |
+          echo "Wassup $nickname !"
+  build_2:
+    runs-on: self-hosted
+    steps:
+      - name: New Step 1
+        run: |
+          echo "Bye $nickname !"

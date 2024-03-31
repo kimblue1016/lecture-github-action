@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   job_set_env:
-    name: Build and Test
+    name: Set ENV
     runs-on: [self-hosted]
     outputs:
       output1: ${{ steps.build_project.outputs.build_id }}
@@ -21,7 +21,7 @@ jobs:
           echo "test_output=pass"
           echo "test_output=pass" >> "$GITHUB_OUTPUT"
   job_get_env:
-    name: Deploy to production
+    name: Get ENV
     needs: job_set_env
     runs-on: [self-hosted]
     steps:
