@@ -1,4 +1,4 @@
-name: p6 - Artifacts
+name: p5 - Artifacts
 on: workflow_dispatch
 jobs:
   job-1:

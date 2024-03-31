@@ -1,4 +1,4 @@
-name: p5 - trigger
+name: p6 - trigger
 on:
   push:
     branches:
