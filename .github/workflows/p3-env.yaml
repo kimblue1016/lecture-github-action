@@ -1,4 +1,4 @@
-name: p3 - env
+name: p3 - Env
 
 on: workflow_dispatch
 

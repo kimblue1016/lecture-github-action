@@ -1,4 +1,4 @@
-name: p4 - variables
+name: p4 - Variables
 on: workflow_dispatch
 
 env:
