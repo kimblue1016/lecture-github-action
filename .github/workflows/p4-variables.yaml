@@ -2,7 +2,7 @@ name: p4 - variables
 on: workflow_dispatch
 
 env:
-  name: sami
+  nickname: sami
 
 jobs:
   build_1:
@@ -14,10 +14,10 @@ jobs:
         run: |
           echo "hi $nickname !"
       - name: Step 2
-        run: |
-          echo "hello $nickname !"
         env:
           nickname: sarah
+        run: |
+          echo "hello $nickname !"
       - name: Step 3
         run: |
           echo "Wassup $nickname !"
