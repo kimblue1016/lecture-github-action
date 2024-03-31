@@ -22,6 +22,7 @@ jobs:
         run: |
           echo "Wassup $nickname !"
   build_2:
+    needs: build_1
     runs-on: self-hosted
     steps:
       - name: New Step 1
