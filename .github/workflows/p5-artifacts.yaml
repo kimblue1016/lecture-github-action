@@ -1,0 +1,29 @@
+name: p6 - Artifacts
+on: workflow_dispatch
+jobs:
+  job-1:
+    runs-on: self-hosted
+    steps:
+      - name: Get Random UUID
+        id: uuid
+        run: echo "::set-output name=uuid::$(uuidgen)"
+      - name: Print UUID
+        run: |
+          echo "UUID: ${{ steps.uuid.outputs.uuid }}"
+          echo "${{ steps.uuid.outputs.uuid }}" > uuid.txt
+      - name: Upload UUID
+        uses: actions/upload-artifact@v3
+        with:
+          name: uuid
+          path: uuid.txt
+  job-2:
+    runs-on: self-hosted
+    needs: job-1
+    steps:
+      - name: Download UUID
+        uses: actions/download-artifact@v3
+        with:
+          name: uuid
+      - name: Print UUID
+        run: |
+          echo "UUID: $(cat uuid.txt)"
