@@ -1,0 +1,25 @@
+name: p5 - trigger
+on:
+  push:
+    branches:
+      - 'main'
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build project
+        run: |
+          echo "Build Project"
+          echo "Branch: $GITHUB_REF"
+      - name: Run tests
+        run: |
+          echo "Run Test"
+  deploy:
+    needs: build
+    runs-on: self-hosted
+    steps:
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production server"
