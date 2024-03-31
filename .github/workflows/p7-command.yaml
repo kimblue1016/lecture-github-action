@@ -6,13 +6,13 @@ jobs:
     steps:
       - name: Step 1
         run: |
-          echo "::debug Run Step 1, How to show debug message?"
+          echo "::debug:: Run Step 1, How to show debug message?"
       - name: Step 2
         run: |
-          echo "::error Run Step 2, Error Raise!"
+          echo "::error:: Run Step 2, Error Raise!"
       - name: Step 3
         run: |
-          echo "::notice Run Step 3, And notice message"
+          echo "::notice:: Run Step 3, And notice message"
       - name: Step 4
         env:
           SECRET_MESSAGE: This is secret message
