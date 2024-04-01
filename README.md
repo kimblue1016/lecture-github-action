@@ -1,2 +1,2 @@
-# study-gitops
+# lecture-github-action
 
