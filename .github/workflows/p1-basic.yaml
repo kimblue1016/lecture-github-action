@@ -4,20 +4,20 @@ on: workflow_dispatch
 
 jobs:
   build:
-    runs-on: [self-hosted]
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Build project
         run: |
-          echo "Build Project 32"
+          echo "Build Source 32"
       - name: Run tests
         run: |
           echo "Run Test 32"
-  deploy:
+  delivery:
     needs: build
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: Deploy to production
+      - name: Delivery to production
         run: |
-          echo "Deploying to production server 32"
+          echo "Delivery Image 32"

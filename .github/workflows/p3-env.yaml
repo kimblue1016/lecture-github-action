@@ -4,7 +4,7 @@ on: workflow_dispatch
 
 jobs:
   step_get_set_env:
-    runs-on: [ self-hosted ]
+    runs-on: self-hosted
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -21,7 +21,7 @@ jobs:
           echo "Random ID: ${{ steps.generate-random-id.outputs.random_id }}"
   job_set_env:
     name: Set ENV
-    runs-on: [self-hosted]
+    runs-on: self-hosted
     outputs:
       output1: ${{ steps.build_project.outputs.build_id }}
       output2: ${{ steps.test_project.outputs.test_output }}
