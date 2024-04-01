@@ -5,7 +5,7 @@ on: workflow_dispatch
 jobs:
   build:
     runs-on: self-hosted
-    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main' }}
+    if: ${{ github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/dev' }}
     steps:
       - name: hi
         run: |
